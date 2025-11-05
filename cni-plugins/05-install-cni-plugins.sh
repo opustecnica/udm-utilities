@@ -15,6 +15,9 @@ case "$(ubnt-device-info firmware || true)" in
     4*)
       DATA_DIR="/data"
       ;;
+    5*)
+      DATA_DIR="/data"
+      ;;
     *)
       echo "ERROR: No persistent storage found." 1>&2
       exit 1
