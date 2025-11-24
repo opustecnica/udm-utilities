@@ -2,22 +2,16 @@
 
 name: NextDNS container
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   workflow_dispatch:
-  # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    paths:
-     - nextdns/docker/Dockerfile
-  schedule:
-    - cron: "0 0 */15 * *"
-  
+
 
 jobs:
   buildx:
     runs-on: ubuntu-latest
     steps:
-    
+
       - name: Set the version
         id: set_version
         run: |
@@ -37,7 +31,7 @@ jobs:
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }} 
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       -
         name: build pihole $VERSION
